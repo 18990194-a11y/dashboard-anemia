@@ -177,7 +177,7 @@ st.pyplot(fig3)
 st.markdown("---")
 
 # GRÁFICO CIRCULAR
-# GRÁFICO DONUT
+
 st.subheader("📚 Distribución de Publicaciones por Año")
 
 tipos = df['Year'].value_counts()
@@ -186,9 +186,15 @@ fig4, ax4 = plt.subplots(figsize=(8,8))
 
 ax4.pie(
     tipos,
-    labels=tipos.index,
     autopct='%1.1f%%',
     startangle=90
+)
+
+ax4.legend(
+    tipos.index,
+    title="Años",
+    loc="center left",
+    bbox_to_anchor=(1, 0.5)
 )
 
 # AGUJERO CENTRAL
