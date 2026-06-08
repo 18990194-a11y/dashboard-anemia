@@ -226,39 +226,35 @@ st.markdown("---")
 
 # GRÁFICO DONUT
 
+
 st.subheader("📚 Distribución de Publicaciones por Año")
 
 tipos = df['Year'].value_counts()
+
+porcentajes = tipos / tipos.sum() * 100
 
 fig4, ax4 = plt.subplots(figsize=(8,8))
 
 ax4.pie(
     tipos,
-    labels=tipos.index,
-    autopct=lambda p: '\n'.join(list(f'{p:.1f}%')),
-    startangle=90,
-    pctdistance=0.75,
-    labeldistance=1.05,
-    textprops={'fontsize': 6}
+    startangle=90
 )
 
-# LEYENDA PEQUEÑA
+# LEYENDA CON AÑOS Y %
 ax4.legend(
-    tipos.index,
-    title="Años",
+    [
+        f"{año} - {porcentaje:.1f}%"
+        for año, porcentaje in zip(
+            tipos.index,
+            porcentajes
+        )
+    ],
+    title="Publicaciones",
     loc="center left",
     bbox_to_anchor=(1, 0.5),
-    fontsize=6,
-    title_fontsize=7
+    fontsize=7,
+    title_fontsize=8
 )
-# AGUJERO CENTRAL
-centro = plt.Circle((0,0), 0.70, fc='white')
-
-fig4.gca().add_artist(centro)
-
-plt.title("Distribución de Publicaciones")
-
-st.pyplot(fig4)
 
 # AGUJERO CENTRAL
 centro = plt.Circle((0,0), 0.70, fc='white')
