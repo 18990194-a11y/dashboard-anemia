@@ -235,7 +235,7 @@ fig4, ax4 = plt.subplots(figsize=(8,8))
 ax4.pie(
     tipos,
     labels=tipos.index,
-    autopct='%1.1f%%',
+    autopct=lambda p: '\n'.join(list(f'{p:.1f}%')),
     startangle=90,
     pctdistance=0.75,
     labeldistance=1.05,
