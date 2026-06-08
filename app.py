@@ -177,9 +177,9 @@ st.pyplot(fig3)
 st.markdown("---")
 
 # GRÁFICO CIRCULAR
-st.subheader("📚 Tipos de Documentos Científicos")
+st.subheader("📚 Distribución de Publicaciones")
 
-tipos = df['Document Type'].value_counts()
+tipos = df['Year'].value_counts()
 
 fig4, ax4 = plt.subplots()
 
