@@ -177,19 +177,26 @@ st.pyplot(fig3)
 st.markdown("---")
 
 # GRÁFICO CIRCULAR
-st.subheader("📚 Distribución de Publicaciones")
+# GRÁFICO DONUT
+st.subheader("📚 Distribución de Publicaciones por Año")
 
 tipos = df['Year'].value_counts()
 
-fig4, ax4 = plt.subplots()
+fig4, ax4 = plt.subplots(figsize=(8,8))
 
 ax4.pie(
     tipos,
     labels=tipos.index,
-    autopct='%1.1f%%'
+    autopct='%1.1f%%',
+    startangle=90
 )
 
-plt.title("Distribución de Tipos de Documento")
+# AGUJERO CENTRAL
+centro = plt.Circle((0,0), 0.70, fc='white')
+
+fig4.gca().add_artist(centro)
+
+plt.title("Distribución de Publicaciones")
 
 st.pyplot(fig4)
 
