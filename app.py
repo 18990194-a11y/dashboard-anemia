@@ -39,6 +39,45 @@ min_citas = st.sidebar.slider(
     int(df['Cited by'].max()),
     0
 )
+# INFORMACIÓN CLÍNICA EN SIDEBAR
+
+st.sidebar.markdown("---")
+
+st.sidebar.markdown("## 🩺 Información Clínica")
+
+st.sidebar.info("""
+### 🩸 La Anemia
+
+Datos relevantes:
+
+🌎 La anemia afecta a millones de personas en el mundo.
+
+👩 Mujeres y niños presentan mayor riesgo.
+
+🧠 La inteligencia artificial ayuda en diagnósticos tempranos.
+
+📊 El análisis de datos médicos mejora la prevención.
+
+🏥 La detección temprana reduce complicaciones de salud.
+""")
+
+st.sidebar.markdown("### 🎯 Objetivo del Dashboard")
+
+st.sidebar.write("""
+Analizar investigaciones científicas relacionadas con anemia,
+machine learning e inteligencia artificial utilizando datos de Scopus.
+""")
+
+st.sidebar.markdown("---")
+
+st.sidebar.markdown("ℹ️ Sobre el Dashboard")
+
+st.sidebar.write("""
+🔬 Datos: Scopus · Ciencia de Datos · Dashboard Bibliométrico
+""")
+
+
+
 
 # FILTRAR DATOS
 
@@ -78,26 +117,6 @@ st.info(
     "Los datos fueron obtenidos desde Scopus y analizados utilizando Python, Pandas y Streamlit."
 )
 
-# CONTEXTO CLÍNICO
-
-st.markdown("## 🩺 Información Clínica")
-
-st.warning("""
-### 🩸 La Anemia
-
-Datos relevantes:
-
-- 🌎 La anemia afecta a millones de personas en el mundo.
-- 👩 Mujeres y niños presentan mayor riesgo.
-- 🧠 La inteligencia artificial ayuda en diagnósticos tempranos.
-- 📊 El análisis de datos médicos mejora la prevención.
-- 🏥 La detección temprana reduce complicaciones de salud.
-
-### 🎯 Objetivo del Dashboard
-
-Analizar investigaciones científicas relacionadas con anemia,
-machine learning e inteligencia artificial utilizando datos de Scopus.
-""")
 # DESCRIPCIÓN
 
 st.write("""
@@ -255,3 +274,43 @@ st.markdown("---")
 st.caption(
     "Proyecto desarrollado con Streamlit, Python, Pandas y Scopus"
 )
+# RECOMENDACIONES
+
+st.markdown("---")
+
+st.subheader("🏥 Recomendaciones para la Práctica Clínica")
+
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.success("""
+    ✅ Para pacientes
+
+    • Realizar controles médicos periódicos.
+
+    • Mantener una alimentación rica en hierro.
+
+    • Detectar síntomas tempranos de anemia.
+    """)
+
+with col2:
+    st.info("""
+    🤖 Para profesionales
+
+    • Utilizar herramientas de IA como apoyo diagnóstico.
+
+    • Analizar datos clínicos para prevención temprana.
+
+    • Mejorar estrategias de atención médica.
+    """)
+
+with col3:
+    st.warning("""
+    📊 Para investigadores
+
+    • Continuar investigaciones sobre IA y anemia.
+
+    • Desarrollar modelos predictivos más precisos.
+
+    • Promover análisis bibliométricos en salud.
+    """)
