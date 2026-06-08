@@ -8,13 +8,35 @@ st.set_page_config(
     layout="wide"
 )
 
-# SIDEBAR
-st.sidebar.title("Navegación")
-st.sidebar.write("Proyecto de Ciencia de Datos")
-st.sidebar.write("Análisis de investigaciones sobre anemia e inteligencia artificial")
 
 # CARGAR DATASET
 df = pd.read_csv("dataset_limpio.csv")
+
+# SIDEBAR
+st.sidebar.title("📊 Panel de Control")
+
+st.sidebar.write(
+    "Utilice estos filtros para explorar la bibliografía científica."
+)
+
+# FILTRO POR PALABRA
+busqueda = st.sidebar.text_input(
+    "🔍 Buscar palabra clave"
+)
+
+# FILTRO POR AÑO
+anio = st.sidebar.selectbox(
+    "📅 Seleccione un año",
+    sorted(df['Year'].unique())
+)
+
+# FILTRO POR CITAS
+min_citas = st.sidebar.slider(
+    "⭐ Mínimo de citas",
+    0,
+    int(df['Cited by'].max()),
+    0
+)
 
 # TÍTULO PRINCIPAL
 st.title("Dashboard Bibliométrico sobre Anemia e Inteligencia Artificial")
@@ -44,14 +66,21 @@ relacionados con anemia, machine learning e inteligencia artificial.
 st.markdown("---")
 
 # FILTRO INTERACTIVO
-st.subheader("Filtro por Año")
+# FILTRAR DATOS
 
-anio = st.selectbox(
-    "Seleccione un año",
-    sorted(df['Year'].unique())
-)
+df_filtrado = df[
+    (df['Year'] == anio) &
+    (df['Cited by'] >= min_citas)
+]
 
-df_filtrado = df[df['Year'] == anio]
+if busqueda:
+    df_filtrado = df_filtrado[
+        df_filtrado['Title'].str.contains(
+            busqueda,
+            case=False,
+            na=False
+        )
+    ]
 
 # SEPARADOR
 st.markdown("---")
@@ -146,6 +175,23 @@ st.pyplot(fig3)
 
 # SEPARADOR
 st.markdown("---")
+
+# GRÁFICO CIRCULAR
+st.subheader("📚 Tipos de Documentos Científicos")
+
+tipos = df['Document Type'].value_counts()
+
+fig4, ax4 = plt.subplots()
+
+ax4.pie(
+    tipos,
+    labels=tipos.index,
+    autopct='%1.1f%%'
+)
+
+plt.title("Distribución de Tipos de Documento")
+
+st.pyplot(fig4)
 
 # CONCLUSIÓN
 st.subheader("Conclusión")
