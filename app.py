@@ -234,18 +234,31 @@ fig4, ax4 = plt.subplots(figsize=(8,8))
 
 ax4.pie(
     tipos,
+    labels=tipos.index,
     autopct='%1.1f%%',
     startangle=90,
-    pctdistance=0.75
+    pctdistance=0.75,
+    labeldistance=1.05,
+    textprops={'fontsize': 6}
 )
 
-# LEYENDA VERTICAL
+# LEYENDA PEQUEÑA
 ax4.legend(
     tipos.index,
     title="Años",
     loc="center left",
-    bbox_to_anchor=(1, 0.5)
+    bbox_to_anchor=(1, 0.5),
+    fontsize=6,
+    title_fontsize=7
 )
+# AGUJERO CENTRAL
+centro = plt.Circle((0,0), 0.70, fc='white')
+
+fig4.gca().add_artist(centro)
+
+plt.title("Distribución de Publicaciones")
+
+st.pyplot(fig4)
 
 # AGUJERO CENTRAL
 centro = plt.Circle((0,0), 0.70, fc='white')
