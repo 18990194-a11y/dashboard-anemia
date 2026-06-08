@@ -186,11 +186,10 @@ fig4, ax4 = plt.subplots(figsize=(8,8))
 
 ax4.pie(
     tipos,
-    ax4.pie(
-    tipos,
     autopct=lambda p: f'{p:.1f}%' if p > 5 else '',
     startangle=90
 )
+
 ax4.legend(
     tipos.index,
     title="Años",
