@@ -19,6 +19,14 @@ df = pd.read_csv("dataset_limpio.csv")
 # TÍTULO PRINCIPAL
 st.title("Dashboard Bibliométrico sobre Anemia e Inteligencia Artificial")
 
+
+# INTEGRANTE
+st.markdown("### 👩‍💻 Integrante")
+
+st.write("""
+- Rosa María Flores Echeverría
+""")
+
 # MENSAJES
 st.success("Bienvenido al dashboard bibliométrico sobre anemia e inteligencia artificial.")
 
